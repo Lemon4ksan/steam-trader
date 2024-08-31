@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://steam-trader-wrapper.org/async/">
+        <link rel="canonical" href="https://lemon4ksan.github.io/steam-trader/async/">
       
       
         <link rel="prev" href="../quickstart/">
@@ -474,7 +474,7 @@
         
   
   <span class="md-ellipsis">
-    Ext клиенты
+    Ext клиент
   </span>
   
 
@@ -572,101 +572,110 @@
 
 
 <h1 id="_1">Асинхронный клиент</h1>
-<p>Асинхронный клиент позволяет создавать обльшое количество запросов более эффективно. Он не всегда неоюходим, но часто незаменим.
+<p>Асинхронный клиент позволяет создавать обльшое количество запросов более эффективно. Он не всегда необходим, но часто незаменим.
 Этот раздел пройдётся по тому, как его настроить.</p>
 <h2 id="_2">Инициализация клиента</h2>
 <p>Инициализация асинхронного клиента похожа на инициализацию синхронного.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span></code></pre></div>
-<p>Для того чтобы создавать асинхронные запросы, необходимо поместить ваш код в асинхронную функцию.
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="o">...</span>
-</span></code></pre></div></p>
-<p>Для работы с клиентом нужно использовать асинхронный контекстный менеджер.
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="o">...</span>
-</span></code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Для того чтобы создавать асинхронные запросы, необходимо поместить ваш код в асинхронную функцию.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<p>Для работы с клиентом нужно использовать асинхронный контекстный менеджер.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
+
 <p>При вызове асинхронной функции она не выполняется, а возвращает объект корутины.
-С помощью await мы показываем где мы будем ждать чего-то.
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="n">operations_history</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get_operations_history</span><span class="p">()</span>
-</span></code></pre></div></p>
-<p>Если вы попробуете вызвать функцию main, то получите ошибку. Асинхронные функции нужно вызывать с помощью встроенного модуля asyncio.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">asyncio</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="n">operations_history</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get_operations_history</span><span class="p">()</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
-</span></code></pre></div>
+С помощью await мы показываем где мы будем ждать чего-то.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+        <span class="n">operations_history</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get_operations_history</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Если вы попробуете вызвать функцию main, то получите ошибку. Входить в первую асинхронную функцию нужно с помощью встроенного модуля asyncio.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">()</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+        <span class="n">operations_history</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get_operations_history</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+
 <p>Теперь клиент готов к выполнению задач.</p>
 <h2 id="_3">Пример использования</h2>
 <p>Представим, что нам нужно получить информацию о большом количестве предметов.
 Для начала напишем код для синхронного клиента.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">gids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1226</span><span class="p">,</span> <span class="mi">1402</span><span class="p">,</span> <span class="mi">3439</span><span class="p">,</span> <span class="mi">1976</span><span class="p">,</span> <span class="mi">1984</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1227</span><span class="p">,</span> <span class="mi">1205</span><span class="p">,</span> <span class="mi">1523</span><span class="p">,</span> <span class="mi">2484</span><span class="p">,</span> <span class="mi">1524</span><span class="p">,</span> <span class="mi">1503</span><span class="p">,</span> <span class="mi">1506</span><span class="p">,</span> <span class="mi">1220</span><span class="p">,</span> <span class="mi">1515</span><span class="p">,</span> <span class="mi">3530</span><span class="p">,</span> <span class="mi">1745</span><span class="p">,</span> <span class="mi">1202</span><span class="p">]</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="k">for</span> <span class="n">gid</span> <span class="ow">in</span> <span class="n">gids</span><span class="p">:</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>            <span class="n">client</span><span class="o">.</span><span class="n">get_item_info</span><span class="p">(</span><span class="n">gid</span><span class="p">)</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">main</span><span class="p">()</span>
-</span></code></pre></div>
-<p>Замерим скорость выполнения.
-<div class="language-pycon highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">timeit</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go"># 3.7272357000038028</span>
-</span></code></pre></div>
-Данный запрос занял 3 секунды, может показаться, что это немного, но что будет если таких запросов будет 5 а не 1?</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="n">gids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1226</span><span class="p">,</span> <span class="mi">1402</span><span class="p">,</span> <span class="mi">3439</span><span class="p">,</span> <span class="mi">1976</span><span class="p">,</span> <span class="mi">1984</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1227</span><span class="p">,</span> <span class="mi">1205</span><span class="p">,</span> <span class="mi">1523</span><span class="p">,</span> <span class="mi">2484</span><span class="p">,</span> <span class="mi">1524</span><span class="p">,</span> <span class="mi">1503</span><span class="p">,</span> <span class="mi">1506</span><span class="p">,</span> <span class="mi">1220</span><span class="p">,</span> <span class="mi">1515</span><span class="p">,</span> <span class="mi">3530</span><span class="p">,</span> <span class="mi">1745</span><span class="p">,</span> <span class="mi">1202</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">gid</span> <span class="ow">in</span> <span class="n">gids</span><span class="p">:</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">get_item_info</span><span class="p">(</span><span class="n">gid</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Замерим скорость выполнения.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">timeit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">3.7272357000038028</span>
+</code></pre></div>
+
+<p>Данный запрос занял 3 секунды, может показаться, что это немного, но что будет если таких запросов будет больше?</p>
 <p>В оптимизации нам поможет асинхронный клиент.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">asyncio</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">gids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1226</span><span class="p">,</span> <span class="mi">1402</span><span class="p">,</span> <span class="mi">3439</span><span class="p">,</span> <span class="mi">1976</span><span class="p">,</span> <span class="mi">1984</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1227</span><span class="p">,</span> <span class="mi">1205</span><span class="p">,</span> <span class="mi">1523</span><span class="p">,</span> <span class="mi">2484</span><span class="p">,</span> <span class="mi">1524</span><span class="p">,</span> <span class="mi">1503</span><span class="p">,</span> <span class="mi">1506</span><span class="p">,</span> <span class="mi">1220</span><span class="p">,</span> <span class="mi">1515</span><span class="p">,</span> <span class="mi">3530</span><span class="p">,</span> <span class="mi">1745</span><span class="p">,</span> <span class="mi">1202</span><span class="p">]</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>        <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">get_item_info</span><span class="p">(</span><span class="n">gid</span><span class="p">)</span> <span class="k">for</span> <span class="n">gid</span> <span class="ow">in</span> <span class="n">gids</span><span class="p">]</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>        <span class="n">responses</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>        <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">responses</span><span class="p">:</span>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>            <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
-</span></code></pre></div>
-<p>Замерим скорость выполнения.
-<div class="language-pycon highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">timeit</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="go"># 1.1095618000254035</span>
-</span></code></pre></div>
-Как мы выдим, результат пришёл в 3 раза быстрее! Но как это работает?
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="n">gids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1226</span><span class="p">,</span> <span class="mi">1402</span><span class="p">,</span> <span class="mi">3439</span><span class="p">,</span> <span class="mi">1976</span><span class="p">,</span> <span class="mi">1984</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1227</span><span class="p">,</span> <span class="mi">1205</span><span class="p">,</span> <span class="mi">1523</span><span class="p">,</span> <span class="mi">2484</span><span class="p">,</span> <span class="mi">1524</span><span class="p">,</span> <span class="mi">1503</span><span class="p">,</span> <span class="mi">1506</span><span class="p">,</span> <span class="mi">1220</span><span class="p">,</span> <span class="mi">1515</span><span class="p">,</span> <span class="mi">3530</span><span class="p">,</span> <span class="mi">1745</span><span class="p">,</span> <span class="mi">1202</span><span class="p">]</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">get_item_info</span><span class="p">(</span><span class="n">gid</span><span class="p">)</span> <span class="k">for</span> <span class="n">gid</span> <span class="ow">in</span> <span class="n">gids</span><span class="p">]</span>
+        <span class="n">responses</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">responses</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Замерим скорость выполнения.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">timeit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1.1095618000254035</span>
+</code></pre></div>
+
+<p>Как мы выдим, результат пришёл в 3 раза быстрее! Но как это работает?
 Сначала мы создаём все корутины, которые мы собираемся выполнить, затем с помощью asyncio.gather() мы выполняем их <em>одновременно</em>.
 Благодаря асинхронности, интерпретатор не ждёт пока с сервера придёт один запрос, а переключается на следующий.</p>
 <p>Это далеко не единственный пример использования асинхронного клиента, но определённо самый простой для понимания.</p>

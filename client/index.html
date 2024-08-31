@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://steam-trader-wrapper.org/client/">
+        <link rel="canonical" href="https://lemon4ksan.github.io/steam-trader/client/">
       
       
         <link rel="prev" href="../ext_guide/">
@@ -698,7 +698,7 @@
         
   
   <span class="md-ellipsis">
-    Ext клиенты
+    Ext клиент
   </span>
   
 
@@ -1053,6 +1053,27 @@
 <p>Словарь, содержащий сведения об устройстве, с которого выполняются запросы.</p>
 <p><strong>Тип</strong>: <code>dict</code></p>
 </blockquote>
+<p><strong>Использование</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+
+<span class="c1"># или</span>
+
+<span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">ClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">ClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
+
 <hr />
 <h4 id="properety-balance"><strong>properety</strong> <code>balance</code></h4>
 <blockquote>
@@ -1063,8 +1084,8 @@
 <blockquote>
 <p>Создать предложение о продаже определённого предмета.</p>
 <p>Если при создании предложения о ПРОДАЖЕ указать цену меньше, чем у имеющейся заявки на ПОКУПКУ,
-предложение о ПРОДАЖЕ будет исполнено моментально по цене заявки на ПОКУПКУ.
-Например, на сайте есть заявка на покупку за 10 ₽, а продавец собирается выставить предложение за 5 ₽
+предложение о ПРОДАЖЕ будет исполнено моментально по цене заявки на ПОКУПКУ.</p>
+<p>Например, на сайте есть заявка на покупку за 10 ₽, а продавец собирается выставить предложение за 5 ₽
 (дешевле), то сделка совершится по цене 10 ₽.</p>
 <p><strong>Аргументы</strong></p>
 <ul>
@@ -1230,7 +1251,7 @@
 </li>
 <li><strong>limit</strong> <code>int</code>, optional: Максимальное количество строк в списке. По умолчанию - неограниченно.</li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>OrderBook</code></p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>OrderBook</code>, optional</p>
 </blockquote>
 <h4 id="get_web_socket_tokenself"><code>get_web_socket_token</code>(<em>self</em>)</h4>
 <blockquote>
@@ -1311,7 +1332,7 @@
 <blockquote>
 <p>Создать запрос альтернативным WebSocket.
 Для поддержания активного соединения нужно делать этот запрос каждые 2 минуты.</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>AltWebSocket</code></p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>AltWebSocket</code>, optional</p>
 </blockquote>
 
 

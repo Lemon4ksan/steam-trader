@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://steam-trader-wrapper.org/quickstart/">
+        <link rel="canonical" href="https://lemon4ksan.github.io/steam-trader/quickstart/">
       
       
         <link rel="prev" href="..">
@@ -552,7 +552,7 @@
         
   
   <span class="md-ellipsis">
-    Ext клиенты
+    Ext клиент
   </span>
   
 
@@ -729,118 +729,150 @@
 
 <h1 id="_1">Начало работы</h1>
 <h2 id="_2">Получение ключа</h2>
-<p>Перед началом работы необходимо получить токен для авторизации. Его можно получить <a href="https://steam-trader.com/api/">тут</a>.</p>
+<p>Перед началом работы необходимо получить токен для авторизации.</p>
+<p>Его можно получить <a href="https://steam-trader.com/api/">тут</a>.</p>
 <h2 id="_3">Инициализация клиента</h2>
-<p>Начнём с импортирования библиотеки
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">steam_trader</span>
-</span></code></pre></div></p>
-<p>Есть несколько способов работать с запросами: синхронно и асинхронно. Здесь мы разберём работу с синхронным клиентом.
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span></code></pre></div></p>
-<p>Для оптимизации общения между клиентом и сервером можно также использовать контекстный менеджер with для поддержания сеанса, но это необязательно.
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">with</span> <span class="n">client</span><span class="p">:</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="c1"># Ваш код здесь</span>
-</span></code></pre></div></p>
+<p>Начнём с импортирования библиотеки.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">steam_trader</span>
+</code></pre></div>
+
+<p>Есть несколько способов работать с запросами: синхронно и асинхронно. Здесь мы разберём работу с синхронным клиентом.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Для оптимизации общения между клиентом и сервером можно также использовать контекстный менеджер with для поддержания сеанса, но это необязательно.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+    <span class="c1"># Ваш код здесь</span>
+</code></pre></div>
+
 <h2 id="_4">Основные понятия в запросах</h2>
 <p>Далее в документации будут упоминаться определённые термины, которые необходимо понимать.</p>
 <h3 id="appid-assetid-classid-instanceid-contextid">Что такое AppID, AssetID, ClassID, InstanceID и ContextID?</h3>
-<p>AppID - это идентификатор игры с которой вы хотите взаимодействовать, или относится предмет.</p>
-<p>AppID можно встретить в большинстве операций с предметами. Рекомендуется использовать константы для большего понимания.
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">TEAM_FORTRESS2_APPID</span><span class="p">,</span> <span class="n">DOTA2_APPID</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">SUPPORTED_APPIDS</span>
-</span></code></pre></div></p>
+<p>AppID - это идентификатор игры с которой вы хотите взаимодействовать, или относится предмет.
+В библиотеке и документации встречается как gameid.</p>
+<p>AppID можно встретить в большинстве операций с предметами. Рекомендуется использовать константы для большего понимания.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">TEAM_FORTRESS2_APPID</span><span class="p">,</span> <span class="n">DOTA2_APPID</span>
+<span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">SUPPORTED_APPIDS</span>
+</code></pre></div>
+
 <hr />
 <p>AssetID - это уникальный идентификатор для актива (предмета) в Steam. Активы также имеют ClassID и InstanceID, которые являются указанием на фактическое представление элемента.
 Объекты активов также могут иметь свойства количества, чтобы указать, сколько этого точного экземпляра пользователь имеет в случае однотипных предметов.
 Идентификаторы активов также могут меняться при торговле предметом, хотя classid и instanceid должны оставаться прежними, ЕСЛИ свойства предмета не изменились во время торговли.</p>
-<p>AssetID можно встретить в get_items_for_exchange(), get_items_for_exchange_p2p(), exchange(), exchange_p2p() и get_inventory().</p>
+<p>AssetID можно встретить в 
+<a href="../client/#get_items_for_exchangeself">get_items_for_exchange</a>, 
+<a href="../client/#get_items_for_exchange_p2pself">get_items_for_exchange_p2p</a>, 
+<a href="../client/#exchangeself">exchange</a>, 
+<a href="../client/#exchange_p2pself">exchange_p2p</a> и 
+<a href="../client/#get_inventoryself-gameid--statusnone">get_inventory</a>.</p>
 <hr />
 <p>ClassID - это идентификатор, который определяет класс элемента, свойства которого одинаковы для всех элементов с этим идентификатором класса.</p>
-<p>ClassID можно встретить в get_items_for_exchange(), get_items_for_exchange_p2p(), exchange(), exchange_p2p() и get_item_info().</p>
+<p>ClassID можно встретить в 
+<a href="../client/#get_items_for_exchangeself">get_items_for_exchange</a>, 
+<a href="../client/#get_items_for_exchange_p2pself">get_items_for_exchange_p2p</a>, 
+<a href="../client/#exchangeself">exchange</a>, 
+<a href="../client/#exchange_p2pself">exchange_p2p</a> и 
+<a href="../client/#get_item_infoself-gid">get_item_info</a>.</p>
 <hr />
 <p>InstanceID - Это идентификатор, описывающий экземпляр элемента, который наследует свойства от класса, причём идентификатор класса указан в экземпляре.</p>
-<p>InstanceID можно встретить в get_items_for_exchange(), get_items_for_exchange_p2p(), exchange(), exchange_p2p() и get_item_info().</p>
+<p>InstanceID можно встретить в 
+<a href="../client/#get_items_for_exchangeself">get_items_for_exchange</a>, 
+<a href="../client/#get_items_for_exchange_p2pself">get_items_for_exchange_p2p</a>, 
+<a href="../client/#exchangeself">exchange</a>, 
+<a href="../client/#exchange_p2pself">exchange_p2p</a> и 
+<a href="../client/#get_item_infoself-gid">get_item_info</a>.</p>
 <hr />
 <p>ContextID - это способ организации/категоризирования предметов/активов/валюты. 
 Это просто целое число, но в документации Steam описывается способ сделать его в некоторой степени основанным на папках,
 разделив целое число на диапазоны битов и используя каждый диапазон битов для обозначения чего-то другого.</p>
-<p>ContextID можно встретить в get_items_for_exchange(), get_items_for_exchange_p2p(), exchange(), exchange_p2p() и get_item_info().</p>
+<p>ContextID можно встретить в 
+<a href="../client/#get_items_for_exchangeself">get_items_for_exchange</a>, 
+<a href="../client/#get_items_for_exchange_p2pself">get_items_for_exchange_p2p</a>, 
+<a href="../client/#exchangeself">exchange</a>, 
+<a href="../client/#exchange_p2pself">exchange_p2p</a> и 
+<a href="../client/#get_item_infoself-gid">get_item_info</a>.</p>
 <h3 id="gid-itemid">Что такое GID и ItemID?</h3>
 <p>GID - Это идентификатор группы предметов. Под ним подразумеваются все предложения о продаже предмета и общая информация о нём.</p>
-<p>GID можно найти в ссылке при просмотре на сайте или в предметах, получаемых через get_inventory() или напрямую через сайт.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>https://steam-trader.com/tf2/1226-Refined-Metal
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                   |---------^^^^----------|
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>                   Данные цифры являются GID
-</span></code></pre></div>
-Если вы хотите самостоятельно посмотреть предмет с соответствующим GID, вы можете поменять эти цифры на другие.</p>
+<p>GID можно найти в ссылке при просмотре на сайте или в предметах, получаемых через <a href="../client/#get_inventoryself-gameid--statusnone">get_inventory</a>. или напрямую через сайт.</p>
+<div class="highlight"><pre><span></span><code>https://steam-trader.com/tf2/1226-Refined-Metal
+                   |---------^^^^----------|
+                   Данные цифры являются GID
+</code></pre></div>
+
+<p>Если вы хотите самостоятельно посмотреть предмет с соответствующим GID, вы можете поменять эти цифры на другие.</p>
 <hr />
 <p>ItemID - Это идентификатор конкретного предмета. Он позволяет отличить его от других предметов в одной категории.
-ItemID можно получить при покупке предмета или через get_inventory().</p>
+ItemID можно получить при покупке предмета или через <a href="../client/#get_inventoryself-gameid--statusnone">get_inventory</a>.</p>
 <h2 id="_5">Создание запросов</h2>
 <p>Для создания запросов необходимо использовать предоставленные клиентом методы. Весь их список можно найти в <a href="../client/">Справочнике по API</a>.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">TEAM_FORTRESS2_APPID</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">item_info</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_item_info</span><span class="p">(</span><span class="mi">1220</span><span class="p">)</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">inventory</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_inventory</span><span class="p">(</span><span class="n">TEAM_FORTRESS2_APPID</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">TEAM_FORTRESS2_APPID</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="n">item_info</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_item_info</span><span class="p">(</span><span class="mi">1220</span><span class="p">)</span>
+<span class="n">inventory</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_inventory</span><span class="p">(</span><span class="n">TEAM_FORTRESS2_APPID</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</code></pre></div>
+
 <p>После выполнения запроса возвращается объект класса с ответом от сервера. Чтобы получить значения, используйте соответствующие аттрибуты.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">orders</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_order_book</span><span class="p">(</span><span class="mi">1556</span><span class="p">)</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">sell_orders</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">sell</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">buy_orders</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">buy</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">inventory_items</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_inventory</span><span class="p">(</span><span class="mi">440</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span>  <span class="c1"># Предметы на продаже</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="k">for</span> <span class="n">inventory_item</span> <span class="ow">in</span> <span class="n">inventory_items</span><span class="p">:</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">inventory_item</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">inventory_item</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="n">orders</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_order_book</span><span class="p">(</span><span class="mi">1556</span><span class="p">)</span>
+<span class="n">sell_orders</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">sell</span>
+<span class="n">buy_orders</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">buy</span>
+
+<span class="n">inventory_items</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_inventory</span><span class="p">(</span><span class="mi">440</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span>
+<span class="k">for</span> <span class="n">inventory_item</span> <span class="ow">in</span> <span class="n">inventory_items</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">inventory_item</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">inventory_item</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
+</code></pre></div>
+
 <h2 id="_6">Работа с исключениями</h2>
 <p>Во время выполнения вашей программы могут прийти неудачные ответы от сервера. Вам необходимо предусмотреть действия при их возникновении.
 Данная библиотека предоставляет все ошибки, которые могут произойти на сайте.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">exceptions</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">try</span><span class="p">:</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">client</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="mi">40814</span><span class="p">)</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">NotEnoughMoney</span><span class="p">:</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Не хватает денег для покупки.&#39;</span><span class="p">)</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">NoTradeLink</span><span class="p">:</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Не указана ссылка для обмена&#39;</span><span class="p">)</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">SteamTraderError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Произошла непредусмотренная ошибка: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">exceptions</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">steam_trader</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="mi">40814</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">NotEnoughMoney</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Не хватает денег для покупки.&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">NoTradeLink</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Не указана ссылка для обмена&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">SteamTraderError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Произошла непредусмотренная ошибка: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
 <h2 id="_7">Использование констант</h2>
 <p>Для того чтобы вам не пришлось запоминать все уникальные ID, в библиотеке предусмотренны константы.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">TEAM_FORTRESS2_APPID</span><span class="p">,</span> <span class="n">DOTA2_APPID</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">SUPPORTED_APPIDS</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># или</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">constants</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">TF2_TYPE_PRIMARY</span><span class="p">)</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">TEAM_FORTRESS2_APPID</span><span class="p">,</span> <span class="n">DOTA2_APPID</span>
+<span class="kn">from</span> <span class="nn">steam_trader.constants</span> <span class="kn">import</span> <span class="n">SUPPORTED_APPIDS</span>
+
+<span class="c1"># или</span>
+
+<span class="kn">from</span> <span class="nn">steam_trader</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">TF2_TYPE_PRIMARY</span><span class="p">)</span>
+</code></pre></div>
+
 <h2 id="_8">Подключение логов</h2>
 <p>Согласитесь, писать принты каждый раз для проверки валидности данных утомляет. Поэтому данная библиотека поддерживает логи!
 Чтобы подключить логирование, добавьте следующие строчки в свой код:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span> <span class="nn">logging</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+</code></pre></div>
+
 <div class="admonition подсказка">
 <p class="admonition-title">Подсказка</p>
-<p>Если вы не хотите получать логи от модуля httpx то добавите это в свой код: <code>logging.getLogger('httpx').setLevel(logging.WARNING)</code>.
+<p>Если вы хотите получать меньше логов от модуля httpx то добавите это в свой код: <code>logging.getLogger('httpx').setLevel(logging.WARNING)</code>.
 Так вы будете получать только логи предупреждения и выше.</p>
 </div>
 <h2 id="_9">Заключение</h2>
