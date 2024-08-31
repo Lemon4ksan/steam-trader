@@ -1,0 +1,1369 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Неофициальная Python библиотека для работы с API сервиса Steam-Trader">
+      
+      
+      
+        <link rel="canonical" href="https://steam-trader-wrapper.org/client/">
+      
+      
+        <link rel="prev" href="../ext_guide/">
+      
+      
+        <link rel="next" href="../dataclasses/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.33">
+    
+    
+      
+        <title>Основной клиент - SteamTrader-Wrapper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SteamTrader-Wrapper" class="md-header__button md-logo" aria-label="SteamTrader-Wrapper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SteamTrader-Wrapper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Основной клиент
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Lemon4ksan/SteamTrader-Wrapper" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SteamTrader-Wrapper
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SteamTrader-Wrapper" class="md-nav__button md-logo" aria-label="SteamTrader-Wrapper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    SteamTrader-Wrapper
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Lemon4ksan/SteamTrader-Wrapper" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SteamTrader-Wrapper
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Введение
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Начало работы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../async/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Асинхронный клиент
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ext_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Расширенный функционал
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Справочник по API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Справочник по API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Основной клиент
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Основной клиент
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properety-balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      properety balance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sellself-itemid-assetid-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      sell(self, itemid, assetid, price)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buyself-id-type-price-currency1" class="md-nav__link">
+    <span class="md-ellipsis">
+      buy(self, id, type, price, currency=1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_buy_orderself-gid-price-count1" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_buy_order(self, gid, price, *, count=1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi_buyself-gid-max_price-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      multi_buy(self, gid, max_price, count)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit_priceself-id-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit_price(self, id, price)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_itemself-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete_item(self, id)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_down_ordersself-gameid-order_typesell" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_down_orders(self, gameid, *, order_type='sell')
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_items_for_exchangeself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_items_for_exchange(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchangeself" class="md-nav__link">
+    <span class="md-ellipsis">
+      exchange(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_items_for_exchange_p2pself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_items_for_exchange_p2p(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchange_p2pself" class="md-nav__link">
+    <span class="md-ellipsis">
+      exchange_p2p(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_min_pricesself-gid-currency1" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_min_prices(self, gid, currency=1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_item_infoself-gid" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_item_info(self, gid)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_order_bookself-gid-modeall-limitnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_order_book(self, gid, *, mode='all', limit=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_web_socket_tokenself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_web_socket_token(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_inventoryself-gameid-statusnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_inventory(self, gameid, *, status=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_buy_ordersself-gameidnone-gidnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_buy_orders(self, *, gameid=None, gid=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_discountsself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_discounts(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_trade_linkself-trade_link" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_trade_link(self, trade_link)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove_trade_linkself" class="md-nav__link">
+    <span class="md-ellipsis">
+      remove_trade_link(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_operations_historyself-operation_typenone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_operations_history(self, *, operation_type=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_inventoryself-gameid" class="md-nav__link">
+    <span class="md-ellipsis">
+      update_inventory(self, gameid)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_inventory_stateself-gameid" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_inventory_state(self, gameid)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger_alt_web_socketself" class="md-nav__link">
+    <span class="md-ellipsis">
+      trigger_alt_web_socket(self)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataclasses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Датаклассы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ext/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ext клиенты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Исключения
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properety-balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      properety balance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sellself-itemid-assetid-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      sell(self, itemid, assetid, price)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buyself-id-type-price-currency1" class="md-nav__link">
+    <span class="md-ellipsis">
+      buy(self, id, type, price, currency=1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_buy_orderself-gid-price-count1" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_buy_order(self, gid, price, *, count=1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi_buyself-gid-max_price-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      multi_buy(self, gid, max_price, count)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit_priceself-id-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit_price(self, id, price)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_itemself-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete_item(self, id)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_down_ordersself-gameid-order_typesell" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_down_orders(self, gameid, *, order_type='sell')
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_items_for_exchangeself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_items_for_exchange(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchangeself" class="md-nav__link">
+    <span class="md-ellipsis">
+      exchange(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_items_for_exchange_p2pself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_items_for_exchange_p2p(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchange_p2pself" class="md-nav__link">
+    <span class="md-ellipsis">
+      exchange_p2p(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_min_pricesself-gid-currency1" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_min_prices(self, gid, currency=1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_item_infoself-gid" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_item_info(self, gid)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_order_bookself-gid-modeall-limitnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_order_book(self, gid, *, mode='all', limit=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_web_socket_tokenself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_web_socket_token(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_inventoryself-gameid-statusnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_inventory(self, gameid, *, status=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_buy_ordersself-gameidnone-gidnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_buy_orders(self, *, gameid=None, gid=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_discountsself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_discounts(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_trade_linkself-trade_link" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_trade_link(self, trade_link)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove_trade_linkself" class="md-nav__link">
+    <span class="md-ellipsis">
+      remove_trade_link(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_operations_historyself-operation_typenone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_operations_history(self, *, operation_type=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_inventoryself-gameid" class="md-nav__link">
+    <span class="md-ellipsis">
+      update_inventory(self, gameid)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_inventory_stateself-gameid" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_inventory_state(self, gameid)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger_alt_web_socketself" class="md-nav__link">
+    <span class="md-ellipsis">
+      trigger_alt_web_socket(self)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">Основной клиент</h1>
+<h2 id="client"><code>Client</code></h2>
+<p>Одинаково для синхронного и асинхронного клиента.</p>
+<div class="autodoc">
+<div class="autodoc-signature"><em>class </em><code>steam_trader.<strong>Client</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">api_token</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">*</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">base_url=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">headers=None</em><span class="autodoc-punctuation">)</span></div>
+</div>
+<blockquote>
+<p>Класс, представляющий клиент Steam Trader.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>api_token</strong> <code>str</code>: Уникальный ключ для аутентификации.</li>
+<li><strong>proxy</strong> <code>str</code>, optional: Прокси для запросов. Для работы необходимо использовать контекстный менеджер with.</li>
+<li><strong>base_url</strong> <code>str</code>, optional: Ссылка на API Steam Trader.</li>
+<li><strong>headers</strong> <code>dict</code>, optional: Словарь, содержащий сведения об устройстве, с которого выполняются запросы. Используется при каждом запросе на сайт.</li>
+</ul>
+</blockquote>
+<p><code>api_token</code></p>
+<blockquote>
+<p>Уникальный ключ для аутентификации.</p>
+<p><strong>Тип</strong>: <code>str</code></p>
+</blockquote>
+<p><code>proxy</code>, optional</p>
+<blockquote>
+<p>Прокси для запросов. Для работы необходимо использовать контекстный менеджер with.</p>
+<p><strong>Тип</strong>: <code>str</code></p>
+</blockquote>
+<p><code>base_url</code>, optional</p>
+<blockquote>
+<p>Ссылка на API Steam Trader.</p>
+<p><strong>Тип</strong>: <code>str</code></p>
+</blockquote>
+<p><code>headers</code>, optional</p>
+<blockquote>
+<p>Словарь, содержащий сведения об устройстве, с которого выполняются запросы.</p>
+<p><strong>Тип</strong>: <code>dict</code></p>
+</blockquote>
+<hr />
+<h4 id="properety-balance"><strong>properety</strong> <code>balance</code></h4>
+<blockquote>
+<p>Баланс клиента.</p>
+<p><strong>Возвращает</strong>: <code>float</code></p>
+</blockquote>
+<h4 id="sellself-itemid-assetid-price"><code>sell</code>(<em>self, itemid, assetid, price</em>)</h4>
+<blockquote>
+<p>Создать предложение о продаже определённого предмета.</p>
+<p>Если при создании предложения о ПРОДАЖЕ указать цену меньше, чем у имеющейся заявки на ПОКУПКУ,
+предложение о ПРОДАЖЕ будет исполнено моментально по цене заявки на ПОКУПКУ.
+Например, на сайте есть заявка на покупку за 10 ₽, а продавец собирается выставить предложение за 5 ₽
+(дешевле), то сделка совершится по цене 10 ₽.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>itemid</strong> <code>int</code>: Уникальный ID предмета.</li>
+<li><strong>assetid</strong> <code>int</code>: AssetID предмета в Steam.</li>
+<li><strong>price</strong> <code>int</code>: Цена, за которую хотите продать предмет без учёта комиссии/скидки.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>SellResult</code>, optional</p>
+</blockquote>
+<h4 id="buyself-id-type-price-currency1"><code>buy</code>(<em>self, id, type, price, currency=1</em>)</h4>
+<blockquote>
+<p>Создать предложение о покупке предмета по строго указанной цене.
+Если в момент покупки цена предложения о продаже изменится, покупка не совершится.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li>
+<p><strong>id</strong> <code>int</code>: В качества ID может выступать:</p>
+<ul>
+<li>GID для варианта покупки Commodity.</li>
+<li>Часть ссылки после nc/ (nc/L8RJI7XR96Mmo3Bu) для варианта покупки NoCommission.</li>
+<li>ID предложения о продаже для варианта покупки Offer (найти их можно в ItemInfo).</li>
+</ul>
+</li>
+<li>
+<p><strong>type</strong> <code>int</code>: Вариант покупки (указаны выше) - 1 / 2 / 3.</p>
+</li>
+<li><strong>price</strong> <code>float</code>: Цена предложения о продаже без учёта комиссии/скидки.</li>
+<li><strong>currency</strong> <code>int</code>: Валюта покупки. Значение 1 - рубль.</li>
+</ul>
+<div class="admonition заметка">
+<p class="admonition-title">Заметка</p>
+<p>Сайт пока работает только с рублями. Не меняйте значение currency.</p>
+</div>
+<p><strong>Возвращает</strong>: <em>class</em> <code>BuyResult</code>, optional</p>
+</blockquote>
+<h4 id="create_buy_orderself-gid-price-count1"><code>create_buy_order</code>(<em>self, gid, price, *, count=1</em>)</h4>
+<blockquote>
+<p>Создать заявку на покупку предмета с определённым GID.</p>
+<p>При создании запроса может произойти моментальная покупка по аналогии тому, 
+как это сделано в методе sell.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gid</strong> <code>int</code>: ID группы предметов.</li>
+<li><strong>price</strong> <code>float</code>: Цена предмета, за которую будете его покупать без учёта комиссии/скидки.</li>
+<li><strong>count</strong> <code>int</code>: Количество заявок для размещения (не более 500). По умолчанию - 1.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>BuyOrderResult</code>, optional</p>
+</blockquote>
+<h4 id="multi_buyself-gid-max_price-count"><code>multi_buy</code>(<em>self, gid, max_price, count</em>)</h4>
+<blockquote>
+<p>Создать запрос о покупке нескольких предметов с определённым GID.
+Будут куплены самые лучшие (дешёвые) предложения о продаже.</p>
+<p>Если максимальная цена ПОКУПКИ будет указана больше, чем у имеющихся предложений о ПРОДАЖЕ, ПОКУПКА
+совершится по цене предложений. Например, на сайте есть 2 предложения о продаже по цене 10 и 11 ₽,
+если при покупке указать максмальную цену 25 ₽, то сделки совершатся по цене 10 и 11 ₽,
+а общая сумма потраченных средств - 21 ₽.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gid</strong> <code>int</code>: ID группы предметов.</li>
+<li><strong>max_price</strong> <code>float</code>: Максимальная цена одного предмета без учёта комиссии/скидки.</li>
+<li><strong>count</strong> <code>int</code>: Количество предметов для покупки.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>MultiBuyResult</code>, optional</p>
+</blockquote>
+<h4 id="edit_priceself-id-price"><code>edit_price</code>(<em>self, id, price</em>)</h4>
+<blockquote>
+<p>Редактировать цену предмета/заявки на покупку.
+При редактировании может произойти моментальная продажа/покупка по аналогии тому, 
+как это сделано в методах sell и create_buy_order.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>id</strong> <code>int</code>: ID предложения о продаже/заявки на покупку.</li>
+<li><strong>price</strong> <code>float</code>: Новая цена, за которую хотите продать/купить предмет без учёта комиссии/скидки.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>EditPriceResult</code>, optional</p>
+</blockquote>
+<h4 id="delete_itemself-id"><code>delete_item</code>(<em>self, id</em>)</h4>
+<blockquote>
+<p>Снять предмет с продажи/заявку на покупку.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>id</strong> <code>int</code>: ID продажи/заявки на покупку.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>DeleteitemResult</code>, optional</p>
+</blockquote>
+<h4 id="get_down_ordersself-gameid-order_typesell"><code>get_down_orders</code>(<em>self, gameid, *, order_type='sell'</em>)</h4>
+<blockquote>
+<p>Снять все заявки на продажу/покупку предметов.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</li>
+<li><strong>order_type</strong> <code>LiteralString</code>: Тип заявок для удаления:<ul>
+<li>"sell" - предложения о ПРОДАЖЕ. Значение по умолчанию.</li>
+<li>"buy" - предложения о ПОКУПКЕ.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>GetDownOrdersResult</code>, optional</p>
+</blockquote>
+<h4 id="get_items_for_exchangeself"><code>get_items_for_exchange</code>(<em>self</em>)</h4>
+<blockquote>
+<p>Получить список предметов для p2p обмена.</p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>ItemsForExchange</code>, optional</p>
+</blockquote>
+<h4 id="exchangeself"><code>exchange</code>(<em>self</em>)</h4>
+<blockquote>
+<p>Выполнить обмен с ботом.</p>
+<div class="admonition заметка">
+<p class="admonition-title">Заметка</p>
+<p>Вы сами должны принять трейд в приложении Steam, у вас будет 3 часа на это.
+В противном случае трейд будет отменён.</p>
+</div>
+<p><strong>Возвращает</strong>: <em>class</em> <code>ExchangeResult</code>, optional</p>
+</blockquote>
+<h4 id="get_items_for_exchange_p2pself"><code>get_items_for_exchange_p2p</code>(<em>self</em>)</h4>
+<blockquote>
+<p>Получить список предметов для p2p обмена.</p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>ItemsForExchange</code>, optional</p>
+</blockquote>
+<h4 id="exchange_p2pself"><code>exchange_p2p</code>(<em>self</em>)</h4>
+<blockquote>
+<p>Выполнить p2p обмен.</p>
+<div class="admonition заметка">
+<p class="admonition-title">Заметка</p>
+<p>Вы сами должны передать предмет клиенту из полученной информации.</p>
+</div>
+<p><strong>Возвращает</strong>: <em>class</em> <code>ExchangeP2PResult</code>, optional</p>
+</blockquote>
+<h4 id="get_min_pricesself-gid-currency1"><code>get_min_prices</code>(<em>self, gid, currency=1</em>)</h4>
+<blockquote>
+<p>Получить минимальные/максимальные цены предмета.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gid</strong> <code>int</code>: ID группы предметов.</li>
+<li><strong>currency</strong> <code>int</code>: Валюта, значение 1 - рубль.</li>
+</ul>
+<div class="admonition заметка">
+<p class="admonition-title">Заметка</p>
+<p>Сайт пока работает только с рублями. Не меняйте значение currency.</p>
+</div>
+<p><strong>Возвращает</strong>: <em>class</em> <code>MinPrices</code>, optional</p>
+</blockquote>
+<h4 id="get_item_infoself-gid"><code>get_item_info</code>(<em>self, gid</em>)</h4>
+<blockquote>
+<p>Получить информацию о группе предметов.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gid</strong> <code>int</code>: ID группы предметов.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>ItemInfo</code>, optional</p>
+</blockquote>
+<h4 id="get_order_bookself-gid-modeall-limitnone"><code>get_order_book</code>(<em>self, gid, *, mode='all', limit=None</em>)</h4>
+<blockquote>
+<p>Получить заявки о покупке/продаже предмета.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gid</strong> <code>int</code>: ID группы предметов</li>
+<li><strong>mode</strong> <code>LiteralString</code>: Режим отображения:<ul>
+<li>"all" - отображать покупки и продажи. Значение по умолчанию.</li>
+<li>"sell" - отображать только заявки на ПРОДАЖУ.</li>
+<li>"buy" - отображать только заявки на ПОКУПКУ.</li>
+</ul>
+</li>
+<li><strong>limit</strong> <code>int</code>, optional: Максимальное количество строк в списке. По умолчанию - неограниченно.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>OrderBook</code></p>
+</blockquote>
+<h4 id="get_web_socket_tokenself"><code>get_web_socket_token</code>(<em>self</em>)</h4>
+<blockquote>
+<p>Получить токен для авторизации в WebSocket.</p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>WebSocketToken</code>, optional</p>
+</blockquote>
+<h4 id="get_inventoryself-gameid-statusnone"><code>get_inventory</code>(<em>self, gameid, *, status=None</em>)</h4>
+<blockquote>
+<p>Получить инвентарь клиента, включая заявки на покупку и купленные предметы.
+По умолчанию возвращает список предметов из инвентаря Steam, которые НЕ выставлены на продажу.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</li>
+<li><strong>status</strong> <code>Sequnce[int]</code>, optional: Указывается, чтобы получить список предметов с определенным статусом.<ul>
+<li>0 - В продаже</li>
+<li>1 - Принять</li>
+<li>2 - Передать</li>
+<li>3 - Ожидается</li>
+<li>4 - Заявка на покупку</li>
+</ul>
+</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <code>Inventory</code>, optional</p>
+</blockquote>
+<h4 id="get_buy_ordersself-gameidnone-gidnone"><code>get_buy_orders</code>(<em>self, *, gameid=None, gid=None</em>)</h4>
+<blockquote>
+<p>Получить последовательность заявок на покупку. По умолчанию возвращаются заявки для всех предметов из всех разделов.
+При указании соответствующих параметров можно получить заявки из определённого раздела и/или предмета.</p>
+<p><strong>Аргументы</strong>
+* <strong>gameid</strong> <code>int</code>: AppID приложения в Steam.
+* <strong>gid</strong> <code>int</code>: ID группы предметов.</p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>BuyOrders</code>, optional</p>
+</blockquote>
+<h4 id="get_discountsself"><code>get_discounts</code>(<em>self</em>)</h4>
+<blockquote>
+<p>Получить комиссии/скидки и оборот на сайте.
+Данные хранятся в словаре data, где ключ - это AppID игры в Steam.</p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>Discounts</code>, optional</p>
+</blockquote>
+<h4 id="set_trade_linkself-trade_link"><code>set_trade_link</code>(<em>self, trade_link</em>)</h4>
+<blockquote>
+<p>Установить ссылку для обмена.</p>
+<p><strong>Аргументы</strong>
+* <strong>trade_link</strong> <code>str</code>: Ссылка для обмена. Например, https://steamcommunity.com/tradeoffer/new/?partner=453486961&amp;token=ZhXMbDS9</p>
+</blockquote>
+<h4 id="remove_trade_linkself"><code>remove_trade_link</code>(<em>self</em>)</h4>
+<blockquote>
+<p>Удалить ссылку для обмена.</p>
+</blockquote>
+<h4 id="get_operations_historyself-operation_typenone"><code>get_operations_history</code>(<em>self, *, operation_type=None</em>)</h4>
+<blockquote>
+<p>Получить историю операций. По умолчанию все типы.</p>
+<p><strong>Аргументы</strong>
+* <strong>operation_type</strong> <code>int</code>, optional: Тип операции. Может быть пустым.
+    - 1 - Покупка предмета
+    - 2 - Продажа предмета
+    - 3 - Возврат за покупку
+    - 4 - Пополнение баланса
+    - 5 - Вывести средства
+    - 9 - Ожидание покупки
+    - 10 - Штрафной балл</p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>OperationsHistory</code>, optional</p>
+</blockquote>
+<h4 id="update_inventoryself-gameid"><code>update_inventory</code>(<em>self, gameid</em>)</h4>
+<blockquote>
+<p>Обновить инвентарь игры на сайте.</p>
+<p><strong>Аргументы</strong>
+* <strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</p>
+</blockquote>
+<h4 id="get_inventory_stateself-gameid"><code>get_inventory_state</code>(<em>self, gameid</em>)</h4>
+<blockquote>
+<p>Получить текущий статус обновления инвентаря.</p>
+<p><strong>Аргументы</strong>
+* <strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>InventoryState</code>, optional</p>
+</blockquote>
+<h4 id="trigger_alt_web_socketself"><code>trigger_alt_web_socket</code>(<em>self</em>)</h4>
+<blockquote>
+<p>Создать запрос альтернативным WebSocket.
+Для поддержания активного соединения нужно делать этот запрос каждые 2 минуты.</p>
+<p><strong>Возвращает</strong>: <em>class</em> <code>AltWebSocket</code></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+    
+  </body>
+</html>
