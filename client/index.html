@@ -1093,7 +1093,7 @@
 <li><strong>assetid</strong> <code>int</code>: AssetID предмета в Steam.</li>
 <li><strong>price</strong> <code>int</code>: Цена, за которую хотите продать предмет без учёта комиссии/скидки.</li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>SellResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#sellresult"><code>SellResult</code></a>, optional</p>
 </blockquote>
 <h4 id="buyself-id-type-price-currency1"><code>buy</code>(<em>self, id, type, price, currency=1</em>)</h4>
 <blockquote>
@@ -1102,7 +1102,7 @@
 <p><strong>Аргументы</strong></p>
 <ul>
 <li>
-<p><strong>id</strong> <code>int</code>: В качества ID может выступать:</p>
+<p><strong>id</strong> Union[ <code>str</code>, <code>int</code> ]: В качества ID может выступать:</p>
 <ul>
 <li>GID для варианта покупки Commodity.</li>
 <li>Часть ссылки после nc/ (nc/L8RJI7XR96Mmo3Bu) для варианта покупки NoCommission.</li>
@@ -1119,7 +1119,7 @@
 <p class="admonition-title">Заметка</p>
 <p>Сайт пока работает только с рублями. Не меняйте значение currency.</p>
 </div>
-<p><strong>Возвращает</strong>: <em>class</em> <code>BuyResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#buyresult"><code>BuyResult</code></a>, optional</p>
 </blockquote>
 <h4 id="create_buy_orderself-gid-price-count1"><code>create_buy_order</code>(<em>self, gid, price, *, count=1</em>)</h4>
 <blockquote>
@@ -1132,7 +1132,7 @@
 <li><strong>price</strong> <code>float</code>: Цена предмета, за которую будете его покупать без учёта комиссии/скидки.</li>
 <li><strong>count</strong> <code>int</code>: Количество заявок для размещения (не более 500). По умолчанию - 1.</li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>BuyOrderResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#buyorderresult"><code>BuyOrderResult</code></a>, optional</p>
 </blockquote>
 <h4 id="multi_buyself-gid-max_price-count"><code>multi_buy</code>(<em>self, gid, max_price, count</em>)</h4>
 <blockquote>
@@ -1148,7 +1148,7 @@
 <li><strong>max_price</strong> <code>float</code>: Максимальная цена одного предмета без учёта комиссии/скидки.</li>
 <li><strong>count</strong> <code>int</code>: Количество предметов для покупки.</li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>MultiBuyResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#multibuyresult"><code>MultiBuyResult</code></a>, optional</p>
 </blockquote>
 <h4 id="edit_priceself-id-price"><code>edit_price</code>(<em>self, id, price</em>)</h4>
 <blockquote>
@@ -1160,7 +1160,7 @@
 <li><strong>id</strong> <code>int</code>: ID предложения о продаже/заявки на покупку.</li>
 <li><strong>price</strong> <code>float</code>: Новая цена, за которую хотите продать/купить предмет без учёта комиссии/скидки.</li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>EditPriceResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#editpriceresult"><code>EditPriceResult</code></a>, optional</p>
 </blockquote>
 <h4 id="delete_itemself-id"><code>delete_item</code>(<em>self, id</em>)</h4>
 <blockquote>
@@ -1169,7 +1169,7 @@
 <ul>
 <li><strong>id</strong> <code>int</code>: ID продажи/заявки на покупку.</li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>DeleteitemResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#deleteitemresult"><code>DeleteitemResult</code></a>, optional</p>
 </blockquote>
 <h4 id="get_down_ordersself-gameid-order_typesell"><code>get_down_orders</code>(<em>self, gameid, *, order_type='sell'</em>)</h4>
 <blockquote>
@@ -1183,12 +1183,12 @@
 </ul>
 </li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>GetDownOrdersResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#getdownordersresult"><code>GetDownOrdersResult</code></a>, optional</p>
 </blockquote>
 <h4 id="get_items_for_exchangeself"><code>get_items_for_exchange</code>(<em>self</em>)</h4>
 <blockquote>
 <p>Получить список предметов для p2p обмена.</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>ItemsForExchange</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#itemsforexchange"><code>ItemsForExchange</code></a>, optional</p>
 </blockquote>
 <h4 id="exchangeself"><code>exchange</code>(<em>self</em>)</h4>
 <blockquote>
@@ -1198,12 +1198,12 @@
 <p>Вы сами должны принять трейд в приложении Steam, у вас будет 3 часа на это.
 В противном случае трейд будет отменён.</p>
 </div>
-<p><strong>Возвращает</strong>: <em>class</em> <code>ExchangeResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#exchangeresult"><code>ExchangeResult</code></a>, optional</p>
 </blockquote>
 <h4 id="get_items_for_exchange_p2pself"><code>get_items_for_exchange_p2p</code>(<em>self</em>)</h4>
 <blockquote>
 <p>Получить список предметов для p2p обмена.</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>ItemsForExchange</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#itemsforexchange"><code>ItemsForExchange</code></a>, optional</p>
 </blockquote>
 <h4 id="exchange_p2pself"><code>exchange_p2p</code>(<em>self</em>)</h4>
 <blockquote>
@@ -1212,7 +1212,7 @@
 <p class="admonition-title">Заметка</p>
 <p>Вы сами должны передать предмет клиенту из полученной информации.</p>
 </div>
-<p><strong>Возвращает</strong>: <em>class</em> <code>ExchangeP2PResult</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#exchangep2presult"><code>ExchangeP2PResult</code></a>, optional</p>
 </blockquote>
 <h4 id="get_min_pricesself-gid-currency1"><code>get_min_prices</code>(<em>self, gid, currency=1</em>)</h4>
 <blockquote>
@@ -1226,7 +1226,7 @@
 <p class="admonition-title">Заметка</p>
 <p>Сайт пока работает только с рублями. Не меняйте значение currency.</p>
 </div>
-<p><strong>Возвращает</strong>: <em>class</em> <code>MinPrices</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#minprices"><code>MinPrices</code></a>, optional</p>
 </blockquote>
 <h4 id="get_item_infoself-gid"><code>get_item_info</code>(<em>self, gid</em>)</h4>
 <blockquote>
@@ -1235,7 +1235,7 @@
 <ul>
 <li><strong>gid</strong> <code>int</code>: ID группы предметов.</li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>ItemInfo</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#iteminfo"><code>ItemInfo</code></a>, optional</p>
 </blockquote>
 <h4 id="get_order_bookself-gid-modeall-limitnone"><code>get_order_book</code>(<em>self, gid, *, mode='all', limit=None</em>)</h4>
 <blockquote>
@@ -1251,12 +1251,12 @@
 </li>
 <li><strong>limit</strong> <code>int</code>, optional: Максимальное количество строк в списке. По умолчанию - неограниченно.</li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>OrderBook</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#orderbook"><code>OrderBook</code></a>, optional</p>
 </blockquote>
 <h4 id="get_web_socket_tokenself"><code>get_web_socket_token</code>(<em>self</em>)</h4>
 <blockquote>
 <p>Получить токен для авторизации в WebSocket.</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>WebSocketToken</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#websockettoken"><code>WebSocketToken</code></a>, optional</p>
 </blockquote>
 <h4 id="get_inventoryself-gameid-statusnone"><code>get_inventory</code>(<em>self, gameid, *, status=None</em>)</h4>
 <blockquote>
@@ -1265,7 +1265,7 @@
 <p><strong>Аргументы</strong></p>
 <ul>
 <li><strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</li>
-<li><strong>status</strong> <code>Sequnce[int]</code>, optional: Указывается, чтобы получить список предметов с определенным статусом.<ul>
+<li><strong>status</strong> Sequence[ <code>int</code> ], optional: Указывается, чтобы получить список предметов с определенным статусом.<ul>
 <li>0 - В продаже</li>
 <li>1 - Принять</li>
 <li>2 - Передать</li>
@@ -1274,28 +1274,32 @@
 </ul>
 </li>
 </ul>
-<p><strong>Возвращает</strong>: <em>class</em> <code>Inventory</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#inventory"><code>Inventory</code></a>, optional</p>
 </blockquote>
 <h4 id="get_buy_ordersself-gameidnone-gidnone"><code>get_buy_orders</code>(<em>self, *, gameid=None, gid=None</em>)</h4>
 <blockquote>
 <p>Получить последовательность заявок на покупку. По умолчанию возвращаются заявки для всех предметов из всех разделов.
 При указании соответствующих параметров можно получить заявки из определённого раздела и/или предмета.</p>
-<p><strong>Аргументы</strong>
-* <strong>gameid</strong> <code>int</code>: AppID приложения в Steam.
-* <strong>gid</strong> <code>int</code>: ID группы предметов.</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>BuyOrders</code>, optional</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</li>
+<li><strong>gid</strong> <code>int</code>: ID группы предметов.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#buyorders"><code>BuyOrders</code></a>, optional</p>
 </blockquote>
 <h4 id="get_discountsself"><code>get_discounts</code>(<em>self</em>)</h4>
 <blockquote>
 <p>Получить комиссии/скидки и оборот на сайте.
 Данные хранятся в словаре data, где ключ - это AppID игры в Steam.</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>Discounts</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#discounts"><code>Discounts</code></a>, optional</p>
 </blockquote>
 <h4 id="set_trade_linkself-trade_link"><code>set_trade_link</code>(<em>self, trade_link</em>)</h4>
 <blockquote>
 <p>Установить ссылку для обмена.</p>
-<p><strong>Аргументы</strong>
-* <strong>trade_link</strong> <code>str</code>: Ссылка для обмена. Например, https://steamcommunity.com/tradeoffer/new/?partner=453486961&amp;token=ZhXMbDS9</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>trade_link</strong> <code>str</code>: Ссылка для обмена. Например, https://steamcommunity.com/tradeoffer/new/?partner=453486961&amp;token=ZhXMbDS9</li>
+</ul>
 </blockquote>
 <h4 id="remove_trade_linkself"><code>remove_trade_link</code>(<em>self</em>)</h4>
 <blockquote>
@@ -1304,35 +1308,43 @@
 <h4 id="get_operations_historyself-operation_typenone"><code>get_operations_history</code>(<em>self, *, operation_type=None</em>)</h4>
 <blockquote>
 <p>Получить историю операций. По умолчанию все типы.</p>
-<p><strong>Аргументы</strong>
-* <strong>operation_type</strong> <code>int</code>, optional: Тип операции. Может быть пустым.
-    - 1 - Покупка предмета
-    - 2 - Продажа предмета
-    - 3 - Возврат за покупку
-    - 4 - Пополнение баланса
-    - 5 - Вывести средства
-    - 9 - Ожидание покупки
-    - 10 - Штрафной балл</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>OperationsHistory</code>, optional</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>operation_type</strong> <code>int</code>, optional: Тип операции. Может быть пустым.<ul>
+<li>1 - Покупка предмета</li>
+<li>2 - Продажа предмета</li>
+<li>3 - Возврат за покупку</li>
+<li>4 - Пополнение баланса</li>
+<li>5 - Вывести средства</li>
+<li>9 - Ожидание покупки</li>
+<li>10 - Штрафной балл</li>
+</ul>
+</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#operationshistory"><code>OperationsHistory</code></a>, optional</p>
 </blockquote>
 <h4 id="update_inventoryself-gameid"><code>update_inventory</code>(<em>self, gameid</em>)</h4>
 <blockquote>
 <p>Обновить инвентарь игры на сайте.</p>
-<p><strong>Аргументы</strong>
-* <strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</li>
+</ul>
 </blockquote>
 <h4 id="get_inventory_stateself-gameid"><code>get_inventory_state</code>(<em>self, gameid</em>)</h4>
 <blockquote>
 <p>Получить текущий статус обновления инвентаря.</p>
-<p><strong>Аргументы</strong>
-* <strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>InventoryState</code>, optional</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#inventorystate"><code>InventoryState</code></a>, optional</p>
 </blockquote>
 <h4 id="trigger_alt_web_socketself"><code>trigger_alt_web_socket</code>(<em>self</em>)</h4>
 <blockquote>
 <p>Создать запрос альтернативным WebSocket.
 Для поддержания активного соединения нужно делать этот запрос каждые 2 минуты.</p>
-<p><strong>Возвращает</strong>: <em>class</em> <code>AltWebSocket</code>, optional</p>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#altwebsocket"><code>AltWebSocket</code></a>, optional</p>
 </blockquote>
 
 

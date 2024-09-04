@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ext" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -415,6 +420,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ext клиент
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -425,6 +443,91 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExtClient
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExtClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_inventoryself-gameid-filtersnone-statusnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_inventory(self, gameid, *, filters=None, status=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi_sellself-gameid-gid-price-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      multi_sell(self, gameid, gid, price, count)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_trade_modeself-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_trade_mode(self, state)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Датаклассы
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Датаклассы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trademode" class="md-nav__link">
+    <span class="md-ellipsis">
+      TradeMode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -476,6 +579,82 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExtClient
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExtClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_inventoryself-gameid-filtersnone-statusnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_inventory(self, gameid, *, filters=None, status=None)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi_sellself-gameid-gid-price-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      multi_sell(self, gameid, gid, price, count)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_trade_modeself-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_trade_mode(self, state)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Датаклассы
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Датаклассы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trademode" class="md-nav__link">
+    <span class="md-ellipsis">
+      TradeMode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -490,9 +669,133 @@
                   
 
 
-  <h1>Ext клиент</h1>
+<h1 id="ext">Ext клиент</h1>
+<h2 id="extclient"><code>ExtClient</code></h2>
+<p>Одинаково для синхронного и асинхронного клиента.</p>
+<p>Имеет все методы основного клиента.</p>
+<div class="autodoc">
+<div class="autodoc-signature"><em>class </em><code>steam_trader.ext.<strong>ExtClient</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">api_token</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">*</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">base_url=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">headers=None</em><span class="autodoc-punctuation">)</span></div>
+</div>
+<blockquote>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>api_token</strong> <code>str</code>: Уникальный ключ для аутентификации.</li>
+<li><strong>proxy</strong> <code>str</code>, optional: Прокси для запросов. Для работы необходимо использовать контекстный менеджер with.</li>
+<li><strong>base_url</strong> <code>str</code>, optional: Ссылка на API Steam Trader.</li>
+<li><strong>headers</strong> <code>dict</code>, optional: Словарь, содержащий сведения об устройстве, с которого выполняются запросы. Используется при каждом запросе на сайт.</li>
+</ul>
+</blockquote>
+<p><code>api_token</code></p>
+<blockquote>
+<p>Уникальный ключ для аутентификации.</p>
+<p><strong>Тип</strong>: <code>str</code></p>
+</blockquote>
+<p><code>proxy</code>, optional</p>
+<blockquote>
+<p>Прокси для запросов. Для работы необходимо использовать контекстный менеджер with.</p>
+<p><strong>Тип</strong>: <code>str</code></p>
+</blockquote>
+<p><code>base_url</code>, optional</p>
+<blockquote>
+<p>Ссылка на API Steam Trader.</p>
+<p><strong>Тип</strong>: <code>str</code></p>
+</blockquote>
+<p><code>headers</code>, optional</p>
+<blockquote>
+<p>Словарь, содержащий сведения об устройстве, с которого выполняются запросы.</p>
+<p><strong>Тип</strong>: <code>dict</code></p>
+</blockquote>
+<p><strong>Использование</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader.ext</span> <span class="kn">import</span> <span class="n">ExtClient</span>
 
+<span class="n">client</span> <span class="o">=</span> <span class="n">ExtClient</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+<span class="o">...</span>
 
+<span class="c1"># или</span>
+
+<span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">steam_trader.ext</span> <span class="kn">import</span> <span class="n">ExtClientAsync</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">ExtClientAsync</span><span class="p">(</span><span class="s1">&#39;Ваш токен&#39;</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
+
+<hr />
+<h4 id="get_inventoryself-gameid-filtersnone-statusnone"><code>get_inventory</code>(<em>self, gameid, *, filters=None, status=None</em>)</h4>
+<blockquote>
+<p>Получить инвентарь клиента, включая заявки на покупку и купленные предметы.
+По умолчанию возвращает список предметов из инвентаря Steam, которые НЕ выставлены на продажу.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</li>
+<li><strong>filters</strong> <em>class</em> <a href="../dataclasses/#filters"><code>Filters</code></a>, optional: Фильтр для отсеивания предметов.</li>
+<li><strong>status</strong> Sequnce[ <code>int</code> ], optional: Указывается, чтобы получить список предметов с определенным статусом.<ul>
+<li>0 - В продаже</li>
+<li>1 - Принять</li>
+<li>2 - Передать</li>
+<li>3 - Ожидается</li>
+<li>4 - Заявка на покупку</li>
+</ul>
+</li>
+</ul>
+<p><strong>Возвращает</strong>: <em>class</em> <a href="../dataclasses/#inventory">Inventory</a>, optional</p>
+</blockquote>
+<h4 id="multi_sellself-gameid-gid-price-count"><code>multi_sell</code>(<em>self, gameid, gid, price, count</em>)</h4>
+<blockquote>
+<p>Продать множество вещей из инвенторя с одним gid.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gameid</strong> <code>int</code>: AppID приложения в Steam.</li>
+<li><strong>gid</strong> <code>int</code>: ID группы предметов.</li>
+<li><strong>price</strong> <code>float</code>: Цена для выставления на продажу.</li>
+<li><strong>count</strong>  <code>int</code>: Количество предметов для продажи. Если число больше чем предметов в инвенторе, будут проданы те, что имеются.</li>
+</ul>
+<p><em>Возвращает</em>: Sequence[ <em>class</em> <a href="../dataclasses/#sellresult"><code>SellResult</code></a>, optional ]</p>
+</blockquote>
+<h4 id="set_trade_modeself-state"><code>set_trade_mode</code>(<em>self, state</em>)</h4>
+<blockquote>
+<p>Задать режим торговли.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>state</strong> <code>int</code>: Режим торговли.<ul>
+<li>0 - Торговля отключена.</li>
+<li>1 - Торговля включена.</li>
+</ul>
+</li>
+</ul>
+<p><em>Возвращает</em>: <em>class</em> <a href="#trademode"><code>TradeMode</code></a></p>
+</blockquote>
+<h2 id="_1">Датаклассы</h2>
+<h3 id="trademode"><code>TradeMode</code></h3>
+<blockquote>
+<p>Класс, представляющий режим торговли.</p>
+</blockquote>
+<p><code>success</code></p>
+<blockquote>
+<p>Результат запроса.</p>
+<p><strong>Тип</strong>: <code>bool</code></p>
+</blockquote>
+<p><code>state</code></p>
+<blockquote>
+<p>Режим обычной торговли.</p>
+<p><strong>Тип</strong>: <code>bool</code></p>
+</blockquote>
+<p><code>p2p</code></p>
+<blockquote>
+<p>Режим p2p торговли.</p>
+<p><strong>Тип</strong>: <code>bool</code></p>
+</blockquote>
+<p><code>client</code></p>
+<blockquote>
+<p>Клиент Steam Trader.</p>
+<p><strong>Тип</strong>: Union[ <em>class</em> <a href="../client/#client"><code>Client</code></a>, <em>class</em> <a href="../client/#client"><code>ClientAsync</code></a>, <code>None</code> ]</p>
+</blockquote>
 
 
 
