@@ -1596,7 +1596,7 @@
 <p><code>orders</code></p>
 <blockquote>
 <p>Последовательность купленных предметов. Указывается если 'success' = True</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#multibuyitem"><code>MultiBuyOrder</code></a>, optional ], optional</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#multibuyitem"><code>MultiBuyOrder</code></a> ], optional</p>
 </blockquote>
 <p><code>left</code></p>
 <blockquote>
@@ -1744,7 +1744,7 @@
 <p><code>items</code></p>
 <blockquote>
 <p>Последовательность предметов для обмена с ботом.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#itemforexchange"><code>ItemForExchange</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#itemforexchange"><code>ItemForExchange</code></a> ]</p>
 </blockquote>
 <p><code>description</code></p>
 <blockquote>
@@ -1791,7 +1791,7 @@
 <p><code>items</code></p>
 <blockquote>
 <p>Cписок предметов для обмена с ботом.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#exchangeitem"><code>ExchangeItem</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#exchangeitem"><code>ExchangeItem</code></a> ]</p>
 </blockquote>
 <p><code>client</code></p>
 <blockquote>
@@ -1810,17 +1810,17 @@
 <p><code>send</code></p>
 <blockquote>
 <p>Массив с данными для создания нового обмена в Steam.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#p2psendobject"><code>P2PSendObject</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#p2psendobject"><code>P2PSendObject</code></a> ]</p>
 </blockquote>
 <p><code>recieve</code></p>
 <blockquote>
 <p>Массив с данными для принятия обмена.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#p2preceiveobject"><code>P2PRecieveObject</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#p2preceiveobject"><code>P2PRecieveObject</code></a> ]</p>
 </blockquote>
 <p><code>confirm</code></p>
 <blockquote>
 <p>Массив с данными для подтверждения обмена в мобильном аутентификаторе.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#p2pconfirmobject"><code>P2PConfirmObject</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#p2pconfirmobject"><code>P2PConfirmObject</code></a> ]</p>
 </blockquote>
 <p><code>cancel</code></p>
 <blockquote>
@@ -1965,17 +1965,17 @@
 <p><code>sell_offers</code></p>
 <blockquote>
 <p>Последовательность с предложениями о продаже.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#selloffer"><code>SellOffer</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#selloffer"><code>SellOffer</code></a> ]</p>
 </blockquote>
 <p><code>buy_offers</code></p>
 <blockquote>
 <p>Последовательность с предложениями о покупке.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#buyoffer"><code>BuyOffer</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#buyoffer"><code>BuyOffer</code></a> ]</p>
 </blockquote>
 <p><code>sell_history</code></p>
 <blockquote>
 <p>Последовательность истории продаж.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#sellhistoryitem"><code>SellHistoryItem</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#sellhistoryitem"><code>SellHistoryItem</code></a> ]</p>
 </blockquote>
 <p><code>client</code></p>
 <blockquote>
@@ -2056,7 +2056,7 @@
 <p><code>items</code></p>
 <blockquote>
 <p>Последовательность с предметами в инвентаре.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#inventoryitem"><code>InventoryItem</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#inventoryitem"><code>InventoryItem</code></a> ]</p>
 </blockquote>
 <p><code>client</code></p>
 <blockquote>
@@ -2078,7 +2078,7 @@
 <p><code>data</code></p>
 <blockquote>
 <p>Последовательность запросов на покупку.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#buyorder"><code>BuyOrder</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#buyorder"><code>BuyOrder</code></a> ]</p>
 </blockquote>
 <p><code>client</code></p>
 <blockquote>
@@ -2100,7 +2100,7 @@
 <p><code>data</code></p>
 <blockquote>
 <p>Словарь, содержащий комисии/скидки.</p>
-<p><strong>Тип</strong>: dict[ <code>int</code>, <em>class</em> <a href="#discount"><code>Discount</code></a>, optional ]</p>
+<p><strong>Тип</strong>: dict[ <code>int</code>, <em>class</em> <a href="#discount"><code>Discount</code></a> ]</p>
 </blockquote>
 <p><code>client</code></p>
 <blockquote>
@@ -2122,7 +2122,7 @@
 <p><code>data</code></p>
 <blockquote>
 <p>Последовательность историй операций.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#operationshistoryitem"><code>OperationsHistoryItem</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#operationshistoryitem"><code>OperationsHistoryItem</code></a> ]</p>
 </blockquote>
 <p><code>client</code></p>
 <blockquote>
@@ -2176,7 +2176,7 @@
 <p><code>messages</code></p>
 <blockquote>
 <p>Последовательность с WebSocket сообщениями.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#altwebsocketmessage"><code>AltWebSocketMessage</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#altwebsocketmessage"><code>AltWebSocketMessage</code></a> ]</p>
 </blockquote>
 <p><code>client</code></p>
 <blockquote>
@@ -2194,52 +2194,52 @@
 <p><code>quality</code></p>
 <blockquote>
 <p>Качество предмета (TF2, DOTA2).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>type</code></p>
 <blockquote>
 <p>Тип предмета (TF2, DOTA2).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>used_by</code></p>
 <blockquote>
 <p>Класс, который использует предмет (TF2).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>craft</code></p>
 <blockquote>
 <p>Информация о карфте (TF2).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>region</code></p>
 <blockquote>
 <p>Регион игры (SteamGift).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>genre</code></p>
 <blockquote>
 <p>Жанр игры (SteamGift).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>mode</code></p>
 <blockquote>
 <p>Тип игры, взаимодействие с Steam (SteamGift).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>trade</code></p>
 <blockquote>
 <p>Информация об обмене (SteamGift).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>rarity</code></p>
 <blockquote>
 <p>Редкость предмета (DOTA2).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <p><code>hero</code></p>
 <blockquote>
 <p>Герой, который использует предмет (DOTA2).</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a>, optional ]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#filter"><code>Filter</code></a> ], optional</p>
 </blockquote>
 <h3 id="filter"><code>Filter</code></h3>
 <div class="autodoc">
@@ -2450,7 +2450,7 @@
 <blockquote>
 <p>Параметры для POST запроса (https://steamcommunity.com/tradeoffer/new/send) при создании обмена в Steam. 
 Вместо {sessionid} нужно указывать ID своей сессии в Steam.</p>
-<p><strong>Тип</strong>: <em>class</em> <a href="#p2ptradeoffer"><code>P2PTradeOffer</code></a>, optional</p>
+<p><strong>Тип</strong>: <em>class</em> <a href="#p2ptradeoffer"><code>P2PTradeOffer</code></a></p>
 </blockquote>
 <h3 id="p2preceiveobject"><code>P2PReceiveObject</code></h3>
 <div class="autodoc">
@@ -2472,7 +2472,7 @@
 <p><code>items</code></p>
 <blockquote>
 <p>Ссылка для p2p обмена.</p>
-<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#exchangeitem"><code>ExchangeItem</code></a>, optional]</p>
+<p><strong>Тип</strong>: Sequence[ <em>class</em> <a href="#exchangeitem"><code>ExchangeItem</code></a>]</p>
 </blockquote>
 <p><code>partner_steamid</code></p>
 <blockquote>

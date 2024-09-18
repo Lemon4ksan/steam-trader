@@ -496,6 +496,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#get_price_rangeself-gid-modesell" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_price_range(self, gid, mode='sell')
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -515,6 +524,15 @@
   <a href="#trademode" class="md-nav__link">
     <span class="md-ellipsis">
       TradeMode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pricerange" class="md-nav__link">
+    <span class="md-ellipsis">
+      PriceRange
     </span>
   </a>
   
@@ -625,6 +643,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#get_price_rangeself-gid-modesell" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_price_range(self, gid, mode='sell')
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -644,6 +671,15 @@
   <a href="#trademode" class="md-nav__link">
     <span class="md-ellipsis">
       TradeMode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pricerange" class="md-nav__link">
+    <span class="md-ellipsis">
+      PriceRange
     </span>
   </a>
   
@@ -672,7 +708,7 @@
 <h1 id="ext">Ext клиент</h1>
 <h2 id="extclient"><code>ExtClient</code></h2>
 <p>Одинаково для синхронного и асинхронного клиента.</p>
-<p>Имеет все методы основного клиента.</p>
+<p>Наследует все методы основного клиента.</p>
 <div class="autodoc">
 <div class="autodoc-signature"><em>class </em><code>steam_trader.ext.<strong>ExtClient</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">api_token</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">*</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">base_url=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">headers=None</em><span class="autodoc-punctuation">)</span></div>
 </div>
@@ -771,6 +807,21 @@
 </ul>
 <p><em>Возвращает</em>: <em>class</em> <a href="#trademode"><code>TradeMode</code></a></p>
 </blockquote>
+<h4 id="get_price_rangeself-gid-modesell"><code>get_price_range</code>(<em>self, gid, mode='sell'</em>)</h4>
+<blockquote>
+<p>Получить размах цен.</p>
+<p><strong>Аргументы</strong></p>
+<ul>
+<li><strong>gid</strong> <code>int</code>: ID группы предметов.</li>
+<li><strong>mode</strong> <code>str</code>: Режим получения<ul>
+<li>'sell' - Цены запросов на продажу. Значение по умолчанию.</li>
+<li>'buy' - Цены запросов на покупку.</li>
+<li>'history' - Цены из истории продаж. Максимум 100 пунктов.</li>
+</ul>
+</li>
+</ul>
+<p><em>Возвращает</em>: <em>NamedTupple</em> <a href="#pricerange"><code>PriceRange</code></a></p>
+</blockquote>
 <h2 id="_1">Датаклассы</h2>
 <h3 id="trademode"><code>TradeMode</code></h3>
 <blockquote>
@@ -795,6 +846,20 @@
 <blockquote>
 <p>Клиент Steam Trader.</p>
 <p><strong>Тип</strong>: Union[ <em>class</em> <a href="../client/#client"><code>Client</code></a>, <em>class</em> <a href="../client/#client"><code>ClientAsync</code></a>, <code>None</code> ]</p>
+</blockquote>
+<h3 id="pricerange"><code>PriceRange</code></h3>
+<blockquote>
+<p>NamedTuple, представляющий размах цен.</p>
+</blockquote>
+<p><code>lowest</code></p>
+<blockquote>
+<p>Минимальная цена.</p>
+<p><strong>Тип</strong>: <code>float</code></p>
+</blockquote>
+<p><code>highest</code></p>
+<blockquote>
+<p>Максимальная цена.</p>
+<p><strong>Тип</strong>: <code>float</code></p>
 </blockquote>
 
 
